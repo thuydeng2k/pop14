@@ -14,14 +14,14 @@ pipeline {
     }
     stage('build docker') {
       steps {
-        sh '''docker build -t chyld/popcorn:$BUILD_NUMBER .
+        sh '''docker build -t thuyngo2k/popcorn:$BUILD_NUMBER .
 '''
       }
     }
     stage('docker push') {
       steps {
-        sh '''docker login -u chyld -p $DOCKER_PASSWORD
-docker push chyld/popcorn:$BUILD_NUMBER
+        sh '''docker login -u thuyngo2k -p $DOCKER_PASSWORD
+docker push thuyngo2k/popcorn:$BUILD_NUMBER
 '''
       }
     }

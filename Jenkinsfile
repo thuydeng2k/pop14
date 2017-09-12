@@ -18,6 +18,14 @@ pipeline {
 '''
       }
     }
+    
+    stage('tesing') {
+      steps {
+        sh '''docker build -t thuyngo2k/popcorn:$BUILD_NUMBER rails test
+'''
+      }
+    }
+    
     stage('docker push') {
       steps {
         sh '''docker login -u thuyngo2k -p $DOCKER_PASSWORD

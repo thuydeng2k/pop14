@@ -27,6 +27,6 @@ spec:
     spec:
       containers:
       - name: web
-        image: chyld/popcorn:$BUILD_NUMBER
+        image: thuyngo2k/popcorn:$BUILD_NUMBER
         ports:
         - containerPort: 3333

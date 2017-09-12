@@ -14,22 +14,26 @@ pipeline {
     }
     stage('build docker') {
       steps {
-        sh '''docker build -t thuyngo2k/popcorn:$BUILD_NUMBER .'
+        sh '''docker build -t chyld/popcorn:$BUILD_NUMBER .
 '''
       }
     }
-    
-    stage('tesing') {
+    stage('testing') {
       steps {
-        sh '''docker run -t thuyngo2k/popcorn:$BUILD_NUMBER rails test
+        sh '''docker run chyld/popcorn:$BUILD_NUMBER rails test
 '''
       }
     }
-    
     stage('docker push') {
       steps {
-        sh '''docker login -u thuyngo2k -p $DOCKER_PASSWORD
-docker push thuyngo2k/popcorn:$BUILD_NUMBER
+        sh '''docker login -u chyld -p $DOCKER_PASSWORD
+docker push chyld/popcorn:$BUILD_NUMBER
+'''
+      }
+    }
+    stage('deply to k8s') {
+      steps {
+        sh '''envsubst < deployment.yaml | kubectl apply -f -
 '''
       }
     }

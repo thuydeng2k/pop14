@@ -27,6 +27,6 @@ spec:
     spec:
       containers:
       - name: web
-        image: thuyngo2k/popcorn:$BUILD_NUMBER
+        image: thuydeng2k/popcorn:$BUILD_NUMBER
         ports:
         - containerPort: 3333

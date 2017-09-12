@@ -14,20 +14,20 @@ pipeline {
     }
     stage('build docker') {
       steps {
-        sh '''docker build -t thuyngo2k/popcorn:$BUILD_NUMBER .
+        sh '''docker build -t thuydeng2k/popcorn:$BUILD_NUMBER .
 '''
       }
     }
     stage('testing') {
       steps {
-        sh '''docker run thuyngo2k/popcorn:$BUILD_NUMBER rails test
+        sh '''docker run thuydeng2k/popcorn:$BUILD_NUMBER rails test
 '''
       }
     }
     stage('docker push') {
       steps {
-        sh '''docker login -u thuyngo2k -p $DOCKER_PASSWORD
-docker push thuyngo2k/popcorn:$BUILD_NUMBER
+        sh '''docker login -u thuydeng2k -p $DOCKER_PASSWORD
+docker push thuydeng2k/popcorn:$BUILD_NUMBER
 '''
       }
     }

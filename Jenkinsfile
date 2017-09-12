@@ -21,7 +21,7 @@ pipeline {
     
     stage('tesing') {
       steps {
-        sh '''docker build -t thuyngo2k/popcorn:$BUILD_NUMBER rails test
+        sh '''docker run -t thuyngo2k/popcorn:$BUILD_NUMBER rails test
 '''
       }
     }
